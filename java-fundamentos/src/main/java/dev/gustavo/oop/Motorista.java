@@ -1,21 +1,20 @@
 package dev.gustavo.oop;
 
-public class Motorista {
+public class Motorista extends Usuario {
 
-    private String nome;
     private String placa;
     private double avaliacaoMedia;
     private int corridasConcluidas;
 
 
-    public Motorista(String nome, String placa) {
+    public Motorista(String nome, String telefone, String placa) {
+        super(nome, telefone);
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException("Nome inválido.");
         }
         if (placa == null || placa.isBlank()) {
             throw new IllegalArgumentException("Placa inválida.");
         }
-        this.nome = nome;
         this.placa = placa;
         this.avaliacaoMedia = 5.0;
         this.corridasConcluidas = 0;
@@ -40,4 +39,8 @@ public class Motorista {
         return avaliacaoMedia;
     }
 
+    @Override
+    public String descrever() {
+        return super.descrever() + " | " + placa + " | " +avaliacaoMedia;
+    }
 }
