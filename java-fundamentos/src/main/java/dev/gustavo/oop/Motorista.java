@@ -9,9 +9,6 @@ public class Motorista extends Usuario {
 
     public Motorista(String nome, String telefone, String placa) {
         super(nome, telefone);
-        if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("Nome inválido.");
-        }
         if (placa == null || placa.isBlank()) {
             throw new IllegalArgumentException("Placa inválida.");
         }
