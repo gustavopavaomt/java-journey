@@ -1,10 +1,9 @@
 package dev.gustavo.oop;
 
-public class Usuario {
+public sealed class Usuario permits Motorista, Passageiro {
 
     private String nome;
     private String telefone;
-
 
     public Usuario(String nome, String telefone) {
         if (nome == null || nome.isBlank()) {

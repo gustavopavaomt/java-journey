@@ -1,6 +1,6 @@
 package dev.gustavo.oop;
 
-public class Motorista extends Usuario {
+public final class Motorista extends Usuario {
 
     private String placa;
     private double avaliacaoMedia;
