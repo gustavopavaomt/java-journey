@@ -5,14 +5,17 @@ public class Corrida implements Cobravel {
     private Motorista motorista;
     private double distanciaKm;
     private StatusCorrida statusCorrida;
+    private Endereco origem,destino;
 
-    public Corrida(Motorista motorista, double distanciaKm) {
+    public Corrida(Motorista motorista, double distanciaKm, Endereco origem, Endereco destino) {
         if (distanciaKm <= 0) {
             throw new IllegalArgumentException("A distância precisa ser positiva.");
         }
         this.motorista = motorista;
         this.distanciaKm = distanciaKm;
         this.statusCorrida = StatusCorrida.SOLICITADA;
+        this.origem = origem;
+        this.destino = destino;
     }
 
     @Override
