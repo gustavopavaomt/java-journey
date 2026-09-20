@@ -1,11 +1,24 @@
 package dev.gustavo.oop;
 
+import java.util.Objects;
+
 public final class Motorista extends Usuario {
 
     private String placa;
     private double avaliacaoMedia;
     private int corridasConcluidas;
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Motorista motorista = (Motorista) o;
+        return Objects.equals(placa, motorista.placa);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(placa);
+    }
 
     public Motorista(String nome, String telefone, String placa) {
         super(nome, telefone);
