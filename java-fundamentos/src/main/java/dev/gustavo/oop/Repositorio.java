@@ -2,6 +2,7 @@ package dev.gustavo.oop;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Repositorio<T> {
 
@@ -20,4 +21,10 @@ public class Repositorio<T> {
         return this.lista.size();
     }
 
+    public Optional<T> buscarPorIndice(int indice){
+          if(indice >=0 && indice < lista.size()){
+              return Optional.of(lista.get(indice));
+          }
+          return Optional.empty();
+    }
 }

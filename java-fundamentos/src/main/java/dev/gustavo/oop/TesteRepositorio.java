@@ -1,5 +1,7 @@
 package dev.gustavo.oop;
 
+import java.util.Optional;
+
 public class TesteRepositorio {
 
     public static void main(String[] args) {
@@ -16,9 +18,16 @@ public class TesteRepositorio {
         Endereco endereco1 = new Endereco("Rua 1", 10, "Tangara da serra");
         enderecoRepositorio.salvar(endereco1);
 
-        for(Motorista motorista : motoristaRepositorio.listarTodos()){
+        for (Motorista motorista : motoristaRepositorio.listarTodos()) {
             System.out.println(motorista.descrever());
         }
+        Optional<Motorista> achado = motoristaRepositorio.buscarPorIndice(0);
+        achado.ifPresent(motorista -> System.out.println(motorista.descrever()));
 
+        Optional<Motorista> naoAchado = motoristaRepositorio.buscarPorIndice(99);
+        String motorista = naoAchado
+                .map(motorista3 -> motorista3.descrever())
+                .orElse("Não encontrado");
+        System.out.println(motorista);
     }
 }
