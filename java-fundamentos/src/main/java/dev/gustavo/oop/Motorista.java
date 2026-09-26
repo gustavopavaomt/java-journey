@@ -8,6 +8,10 @@ public final class Motorista extends Usuario {
     private double avaliacaoMedia;
     private int corridasConcluidas;
 
+    public String getPlaca() {
+        return placa;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
