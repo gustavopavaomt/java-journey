@@ -32,7 +32,7 @@ public class Corrida implements Cobravel {
 
     public void finalizar() {
         if(statusCorrida != StatusCorrida.EM_ANDAMENTO){
-            throw new IllegalStateException("A corrida precisa estar em andamento");
+            throw new CorridaNaoIniciadaException("Status da corrida: " +statusCorrida+ ". Precisa estar em andamento.");
         }
         this.statusCorrida = StatusCorrida.FINALIZADA;
     }

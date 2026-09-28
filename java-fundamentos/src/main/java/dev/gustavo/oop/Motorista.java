@@ -37,7 +37,7 @@ public final class Motorista extends Usuario {
 
     public void registrarCorrida(double nota) {
         if (nota < 1 || nota > 5) {
-            throw new IllegalArgumentException("Nota inválida. apenas pode ser de 1 a 5.");
+            throw new NotaInvalidaException("Nota " +nota+ " é inválida - deve estar entre 1 e 5.");
         }
         double somaAntiga = avaliacaoMedia * corridasConcluidas;
         double somaNova = somaAntiga + nota;
