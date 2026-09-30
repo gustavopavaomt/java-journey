@@ -1,6 +1,6 @@
 package dev.gustavo.oop;
 
-public sealed class Usuario permits Motorista, Passageiro {
+public abstract sealed class Usuario permits Motorista, Passageiro {
 
     private String nome;
     private String telefone;
