@@ -17,6 +17,10 @@ public sealed class Usuario permits Motorista, Passageiro {
         this.telefone = telefone;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     public String descrever(){
         return nome + " - " + telefone;
     }
