@@ -2,10 +2,10 @@ package dev.gustavo.oop.biblioteca;
 
 public class Livro {
 
-    private String codigo;
-    private String titulo;
-    private String autor;
-    private int anoPublicacao;
+    private final String codigo;
+    private final String titulo;
+    private final String autor;
+    private final int anoPublicacao;
 
     public Livro(int anoPublicacao, String codigo, String titulo, String autor) {
         if (codigo == null || codigo.isBlank()) {
@@ -25,5 +25,31 @@ public class Livro {
         this.titulo = titulo;
         this.autor = autor;
         this.anoPublicacao = anoPublicacao;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public int getAnoPublicacao() {
+        return anoPublicacao;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro{" +
+                "codigo='" + codigo + '\'' +
+                ", titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", anoPublicacao=" + anoPublicacao +
+                '}';
     }
 }
