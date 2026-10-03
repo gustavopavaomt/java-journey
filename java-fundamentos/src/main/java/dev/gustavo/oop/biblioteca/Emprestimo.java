@@ -37,4 +37,8 @@ public class Emprestimo {
     public StatusEmprestimo getStatusEmprestimo() {
         return statusEmprestimo;
     }
+
+    public boolean isAtivo() {
+        return statusEmprestimo == StatusEmprestimo.ATIVO;
+    }
 }

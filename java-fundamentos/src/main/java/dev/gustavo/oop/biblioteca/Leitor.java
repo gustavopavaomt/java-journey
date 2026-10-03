@@ -18,4 +18,8 @@ public abstract sealed class Leitor permits Aluno, Professor {
                 case Aluno a -> 7;
             };
     }
+
+    public String getNome() {
+        return nome;
+    }
 }
