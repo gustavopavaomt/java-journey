@@ -13,10 +13,10 @@ public class TestePagamentos {
         ExecutorService caixas = Executors.newFixedThreadPool(3);
         long inicio = System.currentTimeMillis();
 
-        //Mandando 3 pagamentos pro pool sek esperar nenhum
+        //Mandando 3 pagamentos pro pool sem esperar nenhum
         Future<Boolean> senhaAna = caixas.submit(() -> processadorPagamento.processar("Ana", 200.0));
-        Future<Boolean> senhaBruno = caixas.submit(() -> processadorPagamento.processar("Ana", 750));
-        Future<Boolean> senhaJoao = caixas.submit(() -> processadorPagamento.processar("Ana", 480.0));
+        Future<Boolean> senhaBruno = caixas.submit(() -> processadorPagamento.processar("Bruno", 750));
+        Future<Boolean> senhaJoao = caixas.submit(() -> processadorPagamento.processar("Joao", 480.0));
 
         // Só depois vai buscar os resultados
         System.out.println("Ana: "+ (senhaAna.get() ? "aprovado" : "recusado"));

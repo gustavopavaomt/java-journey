@@ -22,7 +22,7 @@ public class TesteCompra {
     static CompletableFuture<Void> comprar(ServicoCompra servicoCompra, String cliente){
         return CompletableFuture
                 .supplyAsync(() -> servicoCompra.pagar(cliente))
-                .thenApply(pagamento -> servicoCompra.emitirIngresso(pagamento))
-                .thenAccept(ingresso -> servicoCompra.emitirIngresso(ingresso));
+                .thenApply(servicoCompra::emitirIngresso)
+                .thenAccept(servicoCompra::enviarEmail);
     }
 }
