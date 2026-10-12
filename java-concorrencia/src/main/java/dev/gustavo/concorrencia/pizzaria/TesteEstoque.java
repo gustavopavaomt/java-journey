@@ -4,10 +4,17 @@ public class TesteEstoque {
 
     public static void main(String[] args) throws InterruptedException {
         Estoque estoque = new Estoque();
+        RelatorioPedidos relatorioPedidos = new RelatorioPedidos();
         Runnable testeMassas = () -> {
-            for(int i=0; i <10; i++){
+            for (int i = 0; i < 10; i++) {
                 boolean reservou = estoque.reservarMassa();
-                System.out.println(Thread.currentThread().getName()+ " - " + reservou);
+                if (!reservou) {
+                    relatorioPedidos.registrarRecusado();
+                } else {
+                   relatorioPedidos.registrarAceito();
+                }
+
+                System.out.println(Thread.currentThread().getName() + " - " + reservou);
             }
         };
         Thread t1 = new Thread(testeMassas, "T1");
@@ -20,6 +27,9 @@ public class TesteEstoque {
         t1.join();
         t2.join();
         t3.join();
-        System.out.println("Estoque ao fim: "+estoque.getMassasDisponiveis());
+        System.out.println("Aceitos: " + relatorioPedidos.getAceitos());
+        System.out.println("Recusados: " + relatorioPedidos.getRecusados());
+        System.out.println("Total: " + relatorioPedidos.getTotal());
+        System.out.println("Estoque ao fim: " + estoque.getMassasDisponiveis());
     }
 }
