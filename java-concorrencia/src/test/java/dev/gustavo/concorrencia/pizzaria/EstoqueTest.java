@@ -29,4 +29,5 @@ class EstoqueTest {
         assertFalse(reservou);
         assertEquals(0, estoque.getMassasDisponiveis());
     }
+
 }
