@@ -19,6 +19,7 @@ public class ServicoCompra {
         System.out.println("Email enviado: " + ingresso);
     }
     //simula a demora, sem obrigar quem chama a tratar exceptions
+
     private void esperar(int milissegundos) {
        try {
            Thread.sleep(milissegundos);
