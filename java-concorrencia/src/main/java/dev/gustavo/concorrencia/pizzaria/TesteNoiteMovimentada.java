@@ -13,7 +13,7 @@ public class TesteNoiteMovimentada {
 
         ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
         long inicio = System.currentTimeMillis();
-
+        AtendimentoPedido atendimento = new AtendimentoPedido(servicoPedido,estoque,relatorioPedidos);
         for (int i = 1; i <= 50; i++) {
             double valor;
             if (i % 5 == 0) {
@@ -22,23 +22,7 @@ public class TesteNoiteMovimentada {
                 valor = 80.0;
             }
             Pedido pedido = new Pedido(i, "Cliente " + i, "Calabresa", valor);
-            executorService.submit(() -> {
-                try {
-                    servicoPedido.pagar(pedido);
-                } catch (PagamentoRecusadoException e) {
-                    System.out.println(e.getMessage());
-                    relatorioPedidos.registrarRecusado();
-                    return;
-                }
-                if (!estoque.reservarMassa()) {
-                    System.out.println("Pedido " + pedido.pedido() + ": sem massa");
-                    relatorioPedidos.registrarRecusado();
-                    return;
-                }
-                String pizza = servicoPedido.preparar(pedido);
-                servicoPedido.entregar(pedido, pizza);
-                relatorioPedidos.registrarAceito();
-            });
+            executorService.submit(() -> atendimento.atender(pedido));
         }
         executorService.shutdown();
         executorService.awaitTermination(1, TimeUnit.MINUTES);
